@@ -31,11 +31,20 @@ for item in doc:
     try:
         doc1=nlp(item)
         #print(list(doc1.sents))
-        #print(doc1.ents)
-        entities.append(doc1.ents)
+        print(doc1.ents)
+        entities.append((doc1.ents))
     except:
         pass
     i+=1
 
+output=[]
+for item in entities:     #type is <class 'tuple'>
+    print(item)
+    
+dt = pd.DataFrame(entities, columns =['1', '2', '3','4','5','6','7','8','9','10','11']) 
+  
+
+export_csv = dt.to_csv (r'C:/Users/Dragneel/Desktop/out.csv', index = None, header=True)
 
 
+dn=pd.read_csv("C:/Users/Dragneel/Desktop/out.csv")
